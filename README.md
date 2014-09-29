@@ -89,7 +89,7 @@ if (isset($aUser['user']['basicInformation']['name'])) {
 $sName = ArrayPath::remove('user/basicInformation/name', $aUser);
 ```
 
-Example 5 (Using a custom separator)
+Example 5 (Using a custom separator) 
 ==================
 ```php
 <?php
