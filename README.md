@@ -37,7 +37,7 @@ $sLocale  = ArrayPath::get('user/locale', $post, 'Europe/Dublin');
 ```
 
 Example 2 (Set)
----------
+---------------
 ```php
 <?php
 // normal php way
@@ -51,7 +51,7 @@ $sName = ArrayPath::set('Mathias', 'user/basicInformation/name', $aUser);
 ```
 
 Example 3 (Exists)
----------
+------------------
 The exists checks for the existence of the index as in array_key_exists<br>
 and returns true if the key exists regardless the value.<br>
 An isset will return false in case of a null value.
@@ -75,7 +75,7 @@ $bExists = ArrayPath::exists('user/basicInformation/name', $aUser);
 ```
 
 Example 4 (Get and Remove)
-==================
+--------------------------
 ```php
 <?php
 // normal php way
@@ -90,7 +90,7 @@ $sName = ArrayPath::remove('user/basicInformation/name', $aUser);
 ```
 
 Example 5 (Using a custom separator) 
-==================
+------------------------------------
 ```php
 <?php
 ArrayPath::setSeparator('.');
