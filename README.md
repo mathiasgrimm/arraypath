@@ -5,7 +5,7 @@ Forget about checking for existing indexes and/or getting an E_NOTICE.<br>
 
 With ArrayPath you can easily Check, Add, Remove and Retrieve elements from any array
 
-Example 1 and Most Useful use (Get)
+Example 1 (Get)
 ---------
 ```php
 <?php
