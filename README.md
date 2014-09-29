@@ -74,7 +74,7 @@ if (array_key_exists('user', (array)$aUser)) {
 $bExists = ArrayPath::exists('user/basicInformation/name', $aUser);
 ```
 
-Example 4 (Remove)
+Example 4 (Get and Remove)
 ==================
 ```php
 <?php
