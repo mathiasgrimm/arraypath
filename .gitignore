@@ -1,0 +1,12 @@
+﻿## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.bak
+.project
+.settings
+.buildpath
+test/log
+vendor/

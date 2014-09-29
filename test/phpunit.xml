@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>src/</directory>
+        </testsuite>
+    </testsuites>
+    
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../src</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        
+        <log 
+            type           = "coverage-html" 
+            target         = "./log/html" 
+            charset        = "UTF-8"
+            yui            = "true" 
+            hightlight     = "true" 
+            lowupperbound  = "50"
+            highlowerbound = "80"
+        />
+        
+    </logging>
+</phpunit>
