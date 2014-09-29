@@ -1,7 +1,7 @@
 {
     "name": "mathiasgrimm/arraypath",
     "description": "php array utility to manipulate array in a xpath way",
-    "keywords": ["array", "util", "php", "xpath"],
+    "keywords": ["array", "util", "php", "xpath", "array_key_exists_recursive"],
     "homepage": "https://github.com/mathiasgrimm/arraypath/",
     "type": "library",
     "authors": [
