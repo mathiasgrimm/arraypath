@@ -76,6 +76,7 @@ $bExists = ArrayPath::exists('user/basicInformation/name', $aUser);
 
 Example 4 (Remove)
 ==================
+```php
 <?php
 // normal php way
 if (isset($aUser['user']['basicInformation']['name'])) {
