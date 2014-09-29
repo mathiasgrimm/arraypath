@@ -7,7 +7,8 @@ With ArrayPath you can easily Check, Add, Remove and Retrieve elements from any 
 
 Example 1 and Most Useful use (Get)
 ---------
-<pre>
+```php
+<?php
 $post = array(
 	'user' => array(
 	    'basicInformation' => array(
@@ -33,11 +34,12 @@ $sSurname = ArrayPath::get('user/basicInformation/surname' , $post);
 // with default value
 $sLocale  = ArrayPath::get('user/locale', $post, 'Europe/Dublin');
 
-</pre>
+```
 
 Example 2 (Set)
 ---------
-<pre>
+```php
+<?php
 // normal php way
 $aUser = array();
 $sName = $aUser['user']['basicInformation']['name'] = 'Mathias Grimm';
@@ -46,7 +48,7 @@ $sName = $aUser['user']['basicInformation']['name'] = 'Mathias Grimm';
 // ArrayPath 
 $aUser = array();
 $sName = ArrayPath::set('Mathias', 'user/basicInformation/name', $aUser);
-</pre>
+```
 
 Example 3 (Exists)
 ---------
@@ -54,7 +56,8 @@ The exists checks for the existence of the index as in array_key_exists<br>
 and returns true if the key exists regardless the value.<br>
 An isset will return false in case of a null value.
 
-<pre>
+```php
+<?php
 // normal php way
 $bExists = false;
 if (array_key_exists('user', (array)$aUser)) {
@@ -69,11 +72,11 @@ if (array_key_exists('user', (array)$aUser)) {
 
 // ArrayPath 
 $bExists = ArrayPath::exists('user/basicInformation/name', $aUser);
-</pre>
+```
 
 Example 4 (Remove)
 ==================
-<pre>
+<?php
 // normal php way
 if (isset($aUser['user']['basicInformation']['name'])) {
 	$sName = $aUser['user']['basicInformation']['name'];
@@ -83,11 +86,12 @@ if (isset($aUser['user']['basicInformation']['name'])) {
 
 // ArrayPath
 $sName = ArrayPath::remove('user/basicInformation/name', $aUser);
-</pre>
+```
 
 Example 5 (Using a custom separator)
 ==================
-<pre>
+```php
+<?php
 ArrayPath::setSeparator('.');
 $sName = ArrayPath::get('user.basicInformation.name', $aUser);
 
@@ -99,6 +103,6 @@ $sName = ArrayPath::get('user->basicInformation->name', $aUser);
 
 ArrayPath::setSeparator('|');
 $sName = ArrayPath::get('user|basicInformation|name', $aUser);
-</pre>
+```
 
 
