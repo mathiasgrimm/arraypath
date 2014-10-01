@@ -165,24 +165,4 @@ class ArrayPath
         return $bExists;
 
     }
-<<<<<<< HEAD
 }
-=======
-    
-    // will keep commented till i get the bug answered. The behavior of this class won't change at all
-    // https://bugs.php.net/bug.php?id=68110
-//     public static function exists($mIndex, $aSource)
-//     {
-        
-//         $aPath   = explode(self::$sSeparator, $mIndex);
-//         $sEval   = "\$bExists = @\$aSource['" . implode("']['", $aPath) . "'];";
-        
-//         eval($sEval);
-        
-        
-//         return !isset($php_errormsg);
-//     }
-    
-    
-}
->>>>>>> 5e9617bd5872fed2833d0a6f27931c39de392191
