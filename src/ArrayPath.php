@@ -40,7 +40,7 @@ class ArrayPath
     }
     
     /**
-     * get the value of an index $mIndex from the array $aSource
+     * gets the value of an index $mIndex from the array $aSource
      * in the format idx1/idx2/idx3/... where "/" is the current separator
      * 
      * $mDefault is returned in case the requested index does not exists
@@ -74,7 +74,7 @@ class ArrayPath
     }
     
     /**
-     * set $mValue in the array $sSource for the given $mIndex key
+     * sets $mValue in the array $sSource for the given $mIndex key
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
      * 
      * @param mixed $mValue
@@ -101,7 +101,7 @@ class ArrayPath
     }
     
     /**
-     * remove the index $mIndex from the array $aSource
+     * removes the index $mIndex from the array $aSource
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
      *
      * returns the removed value or null if the index was not found
