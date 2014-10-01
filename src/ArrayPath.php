@@ -1,5 +1,5 @@
 <?php
-namespace mathiasgrimm\ArrayPath;
+namespace mathiasgrimm\arraypath;
 
 class ArrayPath
 {
