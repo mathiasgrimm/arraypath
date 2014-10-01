@@ -1,4 +1,11 @@
 <?php
+/**
+ * ArrayPath
+ *
+ * @link      http://github.com/mathiasgrimm/arraypath for the canonical source repository
+ * @copyright Copyright (c) 2014 Mathias Grimm. (http://github.com/mathiasgrimm)
+ * @license   https://github.com/mathiasgrimm/arraypath/blob/master/LICENSE.txt Mathias Grimm License
+ */
 use mathiasgrimm\arraypath\ArrayPath;
 
 class ArrayPathTest extends \PHPUnit_Framework_TestCase
@@ -45,6 +52,11 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
     public function testGetSingleNoDefault()
     {
         $aSource = array(1);
+        
+        $a = microtime();
+        ArrayPath::get(0, $aSource);
+        $b = microtime();
+        
         $this->assertEquals(1, ArrayPath::get(0, $aSource));
         
         $aSource = array('mathias' => 'gladiator');
@@ -128,12 +140,12 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $this->assertEquals(10, ArrayPath::remove('l1-1', $aSource));
-        $this->assertEquals(31, ArrayPath::remove('l1-2/l2-2/l3-2', $aSource));
+        $this->assertEquals(10, ArrayPath::remove('l1-1'           , $aSource));
+        $this->assertEquals(20, ArrayPath::remove('l1-2/l2-1'      , $aSource));
+        $this->assertEquals(31, ArrayPath::remove('l1-2/l2-2/l3-2' , $aSource));
         
         $aExpected = array(
             'l1-2' => array(
-                'l2-1' => 20,
                 'l2-2' => array(
                     'l3-1' => 30,
                 )
@@ -141,6 +153,8 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
         );
         
         $this->assertEquals($aExpected, $aSource);
+        
+        $this->assertEquals(null, ArrayPath::remove('l1-2/l2-2/l3-2/non-existent', $aSource));
     }
     
     public function testExistsSimple()
