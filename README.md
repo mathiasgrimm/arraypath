@@ -60,9 +60,9 @@ An isset will return false in case of a null value.
 <?php
 // normal php way
 $bExists = false;
-if (array_key_exists('user', (array)$aUser)) {
-	if (array_key_exists('basicInformation', (array)$aUser['user'])) {
-		if (array_key_exists('name', (array)$aUser['user']['basicInformation'])) {
+if (array_key_exists('user', (array) $aUser)) {
+	if (array_key_exists('basicInformation', (array) $aUser['user'])) {
+		if (array_key_exists('name', (array) $aUser['user']['basicInformation'])) {
 			$bExists = true;
 		}
 	}
