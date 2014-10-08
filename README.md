@@ -110,3 +110,9 @@ $sName = ArrayPath::get('user|basicInformation|name', $aUser);
 Composer/Packagist
 =========
 https://packagist.org/packages/mathiasgrimm/arraypath
+
+<pre>
+"require": {
+        "mathiasgrimm/arraypath": "dev-master"
+    }
+</pre>
