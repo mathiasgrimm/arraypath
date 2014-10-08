@@ -113,6 +113,6 @@ https://packagist.org/packages/mathiasgrimm/arraypath
 
 <pre>
 "require": {
-        "mathiasgrimm/arraypath": "dev-master"
-    }
+    "mathiasgrimm/arraypath": "dev-master"
+}
 </pre>
