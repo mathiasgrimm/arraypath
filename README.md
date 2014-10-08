@@ -107,3 +107,6 @@ $sName = ArrayPath::get('user|basicInformation|name', $aUser);
 ```
 
 
+Packagist
+=========
+https://packagist.org/packages/mathiasgrimm/arraypath
