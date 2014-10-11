@@ -14,37 +14,37 @@ class ArrayPath
      * @var string
      */
     protected static $sSeparator = '/';
-    
+
     /**
      * sets a new separator and returns the old one
-     * 
+     *
      * @param string $sSeparator
      * @return string
      */
     public static function setSeparator($sSeparator)
     {
-        $sPrevSeparator   = self::$sSeparator; 
-        self::$sSeparator = $sSeparator;
-        
+        $sPrevSeparator   = static::$sSeparator;
+        static::$sSeparator = $sSeparator;
+
         return $sPrevSeparator;
     }
-    
+
     /**
      * returns the current separator
-     * 
+     *
      * @return string
      */
     public static function getSeparator()
     {
-        return self::$sSeparator;
+        return static::$sSeparator;
     }
-    
+
     /**
      * gets the value of an index $mIndex from the array $aSource
      * in the format idx1/idx2/idx3/... where "/" is the current separator
-     * 
+     *
      * $mDefault is returned in case the requested index does not exists
-     * 
+     *
      * @param mixed $mIndex
      * @param array $aSource
      * @param mixed $mDefault
@@ -52,11 +52,11 @@ class ArrayPath
      */
     public static function get($mIndex, $aSource, $mDefault = null)
     {
-        $aPath      = explode(self::$sSeparator, $mIndex);
+        $aPath      = explode(static::$sSeparator, $mIndex);
         $mPath      = '';
         $mCurSource = $aSource;
         $bExists    = true;
-        
+
         foreach ($aPath as $mPath) {
             if (array_key_exists($mPath, (array) $mCurSource)) {
                 $mCurSource  = $mCurSource[$mPath];
@@ -65,18 +65,18 @@ class ArrayPath
                 break;
             }
         }
-        
+
         if (!$bExists) {
             $mCurSource = $mDefault;
         }
-        
+
         return $mCurSource;
     }
-    
+
     /**
      * sets $mValue in the array $sSource for the given $mIndex key
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
-     * 
+     *
      * @param mixed $mValue
      * @param mixed $mIndex
      * @param array $aSource
@@ -84,9 +84,9 @@ class ArrayPath
      */
     public static function set($mValue, $mIndex, &$aSource)
     {
-        $aPath      = explode(self::$sSeparator, $mIndex);
+        $aPath      = explode(static::$sSeparator, $mIndex);
         $mCurSource = &$aSource;
-        
+
         foreach ($aPath as $mPath) {
             if (array_key_exists($mPath, (array) $mCurSource)) {
                 $mCurSource = &$mCurSource[$mPath];
@@ -94,25 +94,25 @@ class ArrayPath
                 $mCurSource[$mPath] = array();
             }
         }
-        
+
         $mCurSource[$mPath] = $mValue;
 
         return $mValue;
     }
-    
+
     /**
      * removes the index $mIndex from the array $aSource
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
      *
      * returns the removed value or null if the index was not found
-     * 
+     *
      * @param mixed $mIndex
      * @param array &$aSource
      * @return mixed $mValue
      */
     public static function remove($mIndex, &$aSource)
     {
-        $aPath          = explode(self::$sSeparator, $mIndex);
+        $aPath          = explode(static::$sSeparator, $mIndex);
         $mCurSource     = &$aSource;
         $mLastIndex     = null;
         $mValue         = null;
@@ -135,24 +135,24 @@ class ArrayPath
             $mValue = $mCurSource[$mVeryLastIndex];
             unset($mCurSource[$mVeryLastIndex]);
         }
-        
+
         return $mValue;
     }
-    
+
     /**
      * checks if the given $mIndex index exists in the array $aSource
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
-     * 
+     *
      * @param mixed $mIndex
      * @param array $aSource
      * @return boolean
      */
     public static function exists($mIndex, $aSource)
     {
-        $aPath      = explode(self::$sSeparator, $mIndex);
+        $aPath      = explode(static::$sSeparator, $mIndex);
         $mCurSource = $aSource;
         $bExists    = true;
-        
+
         foreach ($aPath as $mPath) {
             if (array_key_exists($mPath, (array) $mCurSource)) {
                 $mCurSource  = $mCurSource[$mPath];
@@ -161,7 +161,7 @@ class ArrayPath
                 break;
             }
         }
-        
+
         return $bExists;
 
     }
