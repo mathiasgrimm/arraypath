@@ -163,6 +163,5 @@ class ArrayPath
         }
 
         return $bExists;
-
     }
 }
