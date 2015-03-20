@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4" : {
-            "mathiasgrimm\\arraypath\\" : "src/"
+            "Mathiasgrimm\\Arraypath\\" : "src/"
         }
     }
 }
