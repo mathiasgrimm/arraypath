@@ -48,7 +48,7 @@ class ArrayPath
      * @param mixed $mIndex
      * @param array $aSource
      * @param mixed $mDefault
-     * @return midex $mCurSource
+     * @return mixed $mCurSource
      */
     public static function get($mIndex, $aSource, $mDefault = null)
     {
