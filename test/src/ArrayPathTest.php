@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2014 Mathias Grimm. (http://github.com/mathiasgrimm)
  * @license   https://github.com/mathiasgrimm/arraypath/blob/master/LICENSE.txt Mathias Grimm License
  */
-use Mathiasgrimm\Arraypath\ArrayPath;
+use MathiasGrimm\ArrayPath\ArrayPath;
 
 class ArrayPathTest extends \PHPUnit_Framework_TestCase
 {

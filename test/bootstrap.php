@@ -4,7 +4,7 @@ ini_set('display_errors', 'On');
 
 require '../vendor/autoload.php';
 
-new mathiasgrimm\x\X();
+new mathiasgrimm\X\X();
 
 // spl_autoload_register(function($sClass){
 //     if (strpos($sClass, 'mathiasgrimm\\htmlwrappers\\') === 0) {
