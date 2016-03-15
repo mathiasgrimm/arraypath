@@ -9,9 +9,9 @@ Our examples will be using a class alias which will be explained next
 
 Using Class Alias
 -----------------
-The default class alias is A but you can also define your custom alias.
+The default class alias is `A` but you can also define your custom alias.
 
-By using the default alias (A) you get the benefits of the ide auto-completion
+By using the default alias you get the benefits of the ide auto-completion
 
 
 ```php
