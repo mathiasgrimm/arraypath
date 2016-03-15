@@ -1,11 +1,11 @@
-Array Path
+ArrayPath
 ==========
 
 [![Author](http://img.shields.io/badge/author-@matgrimm-blue.svg?style=flat-square)](https://twitter.com/matgrimm)
 [![Latest Version](https://img.shields.io/github/release/mathiasgrimm/arraypath.svg?style=flat-square)](https://github.com/mathiasgrimm/arraypath/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/mathiasgrimm/arraypath.svg?style=flat-square)](https://packagist.org/packages/mathiasgrimm/arraypath)
 
-Array Path is an easy and very convenient way for manipulating arrays, especially multidimensional.<br>
+ArrayPath is an easy and very convenient way for manipulating arrays, especially multidimensional.<br>
 Forget about checking for existing indexes and/or getting an E_NOTICE.<br>
 
 With ArrayPath you can easily Check, Add, Remove and Retrieve elements from any array

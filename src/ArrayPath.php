@@ -165,6 +165,15 @@ class ArrayPath
         return $bExists;
     }
 
+    /**
+     * Defines a class alias for the ArrayPath class.
+     * The default alias is A and it comes with an ide_helper
+     * which will be useful for ide auto-completion
+     *
+     * You can define your own alias if you want
+     *
+     * @param string $alias
+     */
     public static function registerClassAlias($alias = 'A')
     {
         class_alias('\MathiasGrimm\ArrayPath\ArrayPath', $alias);
