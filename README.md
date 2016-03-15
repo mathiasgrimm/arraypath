@@ -9,10 +9,14 @@ Our examples will be using a class alias which will be explained next
 
 Using Class Alias
 -----------------
-To use a class alias do
+The default class alias is A but you can also define your custom alias.
+
+By using the default alias (A) you get the benefits of the ide auto-completion
+
 
 ```php
 <?php
+// recommended
 ArrayPath::registerClassAlias();
 
 A::get($aData, 'a/b/c');
@@ -24,10 +28,7 @@ MyAlias::get($aData, 'a/b/c');
 
 ```
 
-By using the default alias (A) you get the benefits of the ide auto-completion
-
 A good place to register the class alias is in any bootstrap file like a Service Provider or initialisation script
-
 
 Example 1 (Get)
 ---------
