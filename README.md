@@ -136,6 +136,13 @@ ArrayPath::setSeparator('|');
 $sName = A::get($aUser, 'user|basicInformation|name');
 ```
 
+Parameters Consistency
+--------------------------
+The parameter will always be in this sequence, when available:
+
+`$arrayData, $index, $value, $default`
+
+
 Composer/Packagist
 =========
 https://packagist.org/packages/mathiasgrimm/arraypath
