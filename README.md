@@ -138,7 +138,7 @@ $sName = A::get($aUser, 'user|basicInformation|name');
 
 Parameters Consistency
 --------------------------
-The parameter will always be in this sequence, when available:
+The parameters will always be in this sequence, when available:
 
 `$arrayData, $index, $value, $default`
 
