@@ -54,48 +54,48 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
         $aSource = array(1);
         
         $a = microtime();
-        ArrayPath::get(0, $aSource);
+        ArrayPath::get($aSource, 0);
         $b = microtime();
         
-        $this->assertEquals(1, ArrayPath::get(0, $aSource));
+        $this->assertEquals(1, ArrayPath::get($aSource, 0));
         
         $aSource = array('mathias' => 'gladiator');
-        $this->assertEquals('gladiator', ArrayPath::get('mathias', $aSource));
-        $this->assertEquals(null, ArrayPath::get('non-existent-index', $aSource));
+        $this->assertEquals('gladiator', ArrayPath::get($aSource, 'mathias'));
+        $this->assertEquals(null, ArrayPath::get($aSource, 'non-existent-index'));
     }
     
     public function testGetSingleWithDefault()
     {
         $aSource = array(1);
-        $this->assertEquals(1, ArrayPath::get(0, $aSource));
+        $this->assertEquals(1, ArrayPath::get($aSource, 0));
     
         $aSource = array('mathias' => 'gladiator');
-        $this->assertEquals('gladiator', ArrayPath::get('mathias', $aSource, 'anything'));
-        $this->assertEquals('anything', ArrayPath::get('non-existent-index', $aSource, 'anything'));
+        $this->assertEquals('gladiator', ArrayPath::get($aSource, 'mathias', 'anything'));
+        $this->assertEquals('anything', ArrayPath::get($aSource, 'non-existent-index', 'anything'));
     }
     
     public function testGetMultiNoDefault()
     {
         $aSource = $this->aSource; 
 
-        $this->assertEquals(10, ArrayPath::get('l1-1', $aSource));
-        $this->assertEquals(null, ArrayPath::get('l1-3', $aSource));
+        $this->assertEquals(10, ArrayPath::get($aSource, 'l1-1'));
+        $this->assertEquals(null, ArrayPath::get($aSource, 'l1-3'));
         
-        $this->assertEquals(null, ArrayPath::get('l1-1/non-existent', $aSource));
-        $this->assertEquals(20, ArrayPath::get('l1-2/l2-1', $aSource));
-        $this->assertEquals(30, ArrayPath::get('l1-2/l2-2/l3-1', $aSource));
+        $this->assertEquals(null, ArrayPath::get($aSource, 'l1-1/non-existent'));
+        $this->assertEquals(20, ArrayPath::get($aSource, 'l1-2/l2-1'));
+        $this->assertEquals(30, ArrayPath::get($aSource, 'l1-2/l2-2/l3-1'));
     }
     
     public function testGetMultiDefault()
     {
         $aSource = $this->aSource;
     
-        $this->assertEquals(10, ArrayPath::get('l1-1', $aSource, 'def'));
-        $this->assertEquals('def', ArrayPath::get('l1-3', $aSource, 'def'));
+        $this->assertEquals(10, ArrayPath::get($aSource, 'l1-1', 'def'));
+        $this->assertEquals('def', ArrayPath::get($aSource, 'l1-3', 'def'));
     
-        $this->assertEquals('def', ArrayPath::get('l1-1/non-existent', $aSource, 'def'));
-        $this->assertEquals(20, ArrayPath::get('l1-2/l2-1', $aSource, 'def'));
-        $this->assertEquals(30, ArrayPath::get('l1-2/l2-2/l3-1', $aSource, 'def'));
+        $this->assertEquals('def', ArrayPath::get($aSource, 'l1-1/non-existent', 'def'));
+        $this->assertEquals(20, ArrayPath::get($aSource, 'l1-2/l2-1', 'def'));
+        $this->assertEquals(30, ArrayPath::get($aSource, 'l1-2/l2-2/l3-1', 'def'));
     }
     
     public function testSet()
@@ -123,7 +123,7 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $this->assertEquals(17, ArrayPath::set(17, 'l1-2/l2-2/l3-3', $aSource));
+        $this->assertEquals(17, ArrayPath::set($aSource, 'l1-2/l2-2/l3-3', 17));
         $this->assertEquals($aExpected, $aSource);
     }
     
@@ -140,9 +140,9 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $this->assertEquals(10, ArrayPath::remove('l1-1'           , $aSource));
-        $this->assertEquals(20, ArrayPath::remove('l1-2/l2-1'      , $aSource));
-        $this->assertEquals(31, ArrayPath::remove('l1-2/l2-2/l3-2' , $aSource));
+        $this->assertEquals(10, ArrayPath::remove($aSource, 'l1-1'          ));
+        $this->assertEquals(20, ArrayPath::remove($aSource, 'l1-2/l2-1'     ));
+        $this->assertEquals(31, ArrayPath::remove($aSource, 'l1-2/l2-2/l3-2'));
         
         $aExpected = array(
             'l1-2' => array(
@@ -154,7 +154,7 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($aExpected, $aSource);
         
-        $this->assertEquals(null, ArrayPath::remove('l1-2/l2-2/l3-2/non-existent', $aSource));
+        $this->assertEquals(null, ArrayPath::remove($aSource, 'l1-2/l2-2/l3-2/non-existent'));
     }
     
     public function testExistsSimple()
@@ -162,9 +162,9 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
         $a['a'] = null;
         $a['b'] = 2;
         
-        $this->assertFalse(ArrayPath::exists('c', $a));
-        $this->assertTrue(ArrayPath::exists('a', $a));
-        $this->assertTrue(ArrayPath::exists('b', $a));
+        $this->assertFalse(ArrayPath::exists($a, 'c'));
+        $this->assertTrue(ArrayPath::exists($a, 'a'));
+        $this->assertTrue(ArrayPath::exists($a, 'b'));
     }
     
     public function testExistsMulti()
@@ -177,7 +177,44 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
             )  
         );
         
-        $this->assertFalse(ArrayPath::exists('a/b/c/d', $a));
-        $this->assertTrue(ArrayPath::exists('a/b/c', $a));
+        $this->assertFalse(ArrayPath::exists($a, 'a/b/c/d'));
+        $this->assertTrue(ArrayPath::exists($a, 'a/b/c'));
     }
+
+    public function testItRegisterClassAliasWithForDefault()
+    {
+        $this->assertFalse(class_exists('A'));
+        ArrayPath::registerClassAlias();
+        $this->assertTrue(class_exists('A'));
+
+        $a = array(
+            'a' => array(
+                'b' => array(
+                    'c' => null
+                )
+            )
+        );
+
+        $this->assertFalse(ArrayPath::exists($a, 'a/b/c/d'));
+        $this->assertTrue(ArrayPath::exists($a, 'a/b/c'));
+    }
+
+    public function testItRegisterClassAliasWithAlias()
+    {
+        $this->assertFalse(class_exists('MyAlias'));
+        ArrayPath::registerClassAlias('MyAlias');
+        $this->assertTrue(class_exists('MyAlias'));
+
+        $a = array(
+            'a' => array(
+                'b' => array(
+                    'c' => null
+                )
+            )
+        );
+
+        $this->assertFalse(MyAlias::exists($a, 'a/b/c/d'));
+        $this->assertTrue(MyAlias::exists($a, 'a/b/c'));
+    }
+
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="bootstrap.php" colors="true">
+<phpunit bootstrap="test/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>src/</directory>
@@ -9,7 +9,7 @@
     
     <filter>
         <whitelist>
-            <directory suffix=".php">../src</directory>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
 

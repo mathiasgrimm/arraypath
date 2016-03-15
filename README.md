@@ -5,6 +5,30 @@ Forget about checking for existing indexes and/or getting an E_NOTICE.<br>
 
 With ArrayPath you can easily Check, Add, Remove and Retrieve elements from any array
 
+Our examples will be using a class alias which will be explained next
+
+Using Class Alias
+-----------------
+To use a class alias do
+
+```php
+<?php
+ArrayPath::registerClassAlias();
+
+A::get($aData, 'a/b/c');
+
+// or
+
+ArrayPath::registerClassAlias('MyAlias');
+MyAlias::get($aData, 'a/b/c');
+
+```
+
+By using the default alias (A) you get the benefits of the ide auto-completion
+
+A good place to register the class alias is in any bootstrap file like a Service Provider or initialisation script
+
+
 Example 1 (Get)
 ---------
 ```php
@@ -28,11 +52,11 @@ $sLocale = isset($post['user']['locale']) ? $post['user']['locale'] : 'Europe/Du
 // ===================================================================
 
 // ArrayPath
-$sName    = ArrayPath::get('user/basicInformation/name'    , $post);
-$sSurname = ArrayPath::get('user/basicInformation/surname' , $post);
+$sName    = A::get($post, 'user/basicInformation/name');
+$sSurname = A::get($post, 'user/basicInformation/surname');
 
 // with default value
-$sLocale  = ArrayPath::get('user/locale', $post, 'Europe/Dublin');
+$sLocale  = A:get($post, 'user/locale', 'Europe/Dublin');
 
 ```
 
@@ -47,7 +71,7 @@ $sName = $aUser['user']['basicInformation']['name'] = 'Mathias Grimm';
 
 // ArrayPath 
 $aUser = array();
-$sName = ArrayPath::set('Mathias', 'user/basicInformation/name', $aUser);
+$sName = A::set($aUser, 'user/basicInformation/name', 'Mathias');
 ```
 
 Example 3 (Exists)
@@ -71,7 +95,7 @@ if (array_key_exists('user', (array) $aUser)) {
 // ===================================================================
 
 // ArrayPath 
-$bExists = ArrayPath::exists('user/basicInformation/name', $aUser);
+$bExists = A::exists($aUser, 'user/basicInformation/name');
 ```
 
 Example 4 (Get and Remove)
@@ -86,7 +110,7 @@ if (isset($aUser['user']['basicInformation']['name'])) {
 
 
 // ArrayPath
-$sName = ArrayPath::remove('user/basicInformation/name', $aUser);
+$sName = A::remove($aUser, 'user/basicInformation/name');
 ```
 
 Example 5 (Using a custom separator) 
@@ -94,18 +118,17 @@ Example 5 (Using a custom separator)
 ```php
 <?php
 ArrayPath::setSeparator('.');
-$sName = ArrayPath::get('user.basicInformation.name', $aUser);
+$sName = A::get($aUser, 'user.basicInformation.name');
 
 ArrayPath::setSeparator('-');
-$sName = ArrayPath::get('user-basicInformation-name', $aUser);
+$sName = A::get($aUser, 'user-basicInformation-name');
 
 ArrayPath::setSeparator('->');
-$sName = ArrayPath::get('user->basicInformation->name', $aUser);
+$sName = A::get($aUser, 'user->basicInformation->name');
 
 ArrayPath::setSeparator('|');
-$sName = ArrayPath::get('user|basicInformation|name', $aUser);
+$sName = A::get($aUser, 'user|basicInformation|name');
 ```
-
 
 Composer/Packagist
 =========
@@ -113,6 +136,6 @@ https://packagist.org/packages/mathiasgrimm/arraypath
 
 <pre>
 "require": {
-    "mathiasgrimm/arraypath": "dev-master"
+    "mathiasgrimm/arraypath": "2.*"
 }
 </pre>

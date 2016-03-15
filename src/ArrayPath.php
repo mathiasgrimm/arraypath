@@ -23,7 +23,7 @@ class ArrayPath
      */
     public static function setSeparator($sSeparator)
     {
-        $sPrevSeparator   = static::$sSeparator;
+        $sPrevSeparator     = static::$sSeparator;
         static::$sSeparator = $sSeparator;
 
         return $sPrevSeparator;
@@ -45,12 +45,12 @@ class ArrayPath
      *
      * $mDefault is returned in case the requested index does not exists
      *
-     * @param mixed $mIndex
      * @param array $aSource
+     * @param mixed $mIndex
      * @param mixed $mDefault
      * @return mixed $mCurSource
      */
-    public static function get($mIndex, $aSource, $mDefault = null)
+    public static function get($aSource, $mIndex, $mDefault = null)
     {
         $aPath      = explode(static::$sSeparator, $mIndex);
         $mPath      = '';
@@ -77,12 +77,12 @@ class ArrayPath
      * sets $mValue in the array $sSource for the given $mIndex key
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
      *
-     * @param mixed $mValue
-     * @param mixed $mIndex
      * @param array $aSource
+     * @param mixed $mIndex
+     * @param mixed $mValue
      * @return mixed
      */
-    public static function set($mValue, $mIndex, &$aSource)
+    public static function set(&$aSource, $mIndex, $mValue)
     {
         $aPath      = explode(static::$sSeparator, $mIndex);
         $mCurSource = &$aSource;
@@ -106,11 +106,11 @@ class ArrayPath
      *
      * returns the removed value or null if the index was not found
      *
-     * @param mixed $mIndex
      * @param array &$aSource
+     * @param mixed $mIndex
      * @return mixed $mValue
      */
-    public static function remove($mIndex, &$aSource)
+    public static function remove(&$aSource, $mIndex)
     {
         $aPath          = explode(static::$sSeparator, $mIndex);
         $mCurSource     = &$aSource;
@@ -143,11 +143,11 @@ class ArrayPath
      * checks if the given $mIndex index exists in the array $aSource
      * where $mIndex is idx1/idx2/idx3/... and "/" is the current separator
      *
-     * @param mixed $mIndex
      * @param array $aSource
+     * @param mixed $mIndex
      * @return boolean
      */
-    public static function exists($mIndex, $aSource)
+    public static function exists($aSource, $mIndex)
     {
         $aPath      = explode(static::$sSeparator, $mIndex);
         $mCurSource = $aSource;
@@ -163,5 +163,10 @@ class ArrayPath
         }
 
         return $bExists;
+    }
+
+    public static function registerClassAlias($alias = 'A')
+    {
+        class_alias('\MathiasGrimm\ArrayPath\ArrayPath', $alias);
     }
 }

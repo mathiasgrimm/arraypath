@@ -10,3 +10,4 @@
 .buildpath
 test/log
 vendor/
+.idea
