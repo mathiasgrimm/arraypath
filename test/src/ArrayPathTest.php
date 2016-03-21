@@ -217,4 +217,9 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(MyAlias::exists($a, 'a/b/c'));
     }
 
+    public function testItRegisterAliasOnlyOnce()
+    {
+        $this->assertTrue(ArrayPath::registerClassAlias('AP'));
+        $this->assertFalse(ArrayPath::registerClassAlias('AP'));
+    }
 }

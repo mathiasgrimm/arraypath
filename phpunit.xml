@@ -3,7 +3,7 @@
 <phpunit bootstrap="test/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>src/</directory>
+            <directory>test/src/</directory>
         </testsuite>
     </testsuites>
     
@@ -17,7 +17,7 @@
         
         <log 
             type           = "coverage-html" 
-            target         = "./log/html" 
+            target         = "test/log/html"
             charset        = "UTF-8"
             yui            = "true" 
             hightlight     = "true" 

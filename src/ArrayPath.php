@@ -172,10 +172,18 @@ class ArrayPath
      *
      * You can define your own alias if you want
      *
+     * If a given class alias already exists it will not be registered
+     *
+     *
      * @param string $alias
+     * @return boolean
      */
     public static function registerClassAlias($alias = 'A')
     {
-        class_alias('\MathiasGrimm\ArrayPath\ArrayPath', $alias);
+        if (!class_exists($alias)) {
+            return class_alias('\MathiasGrimm\ArrayPath\ArrayPath', $alias);
+        }
+
+        return false;
     }
 }
