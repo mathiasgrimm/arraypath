@@ -62,7 +62,7 @@ $sName    = A::get($post, 'user/basicInformation/name');
 $sSurname = A::get($post, 'user/basicInformation/surname');
 
 // with default value
-$sLocale  = A:get($post, 'user/locale', 'Europe/Dublin');
+$sLocale  = A::get($post, 'user/locale', 'Europe/Dublin');
 
 ```
 
@@ -75,7 +75,7 @@ $aUser = array();
 $sName = $aUser['user']['basicInformation']['name'] = 'Mathias Grimm';
 // ===================================================================
 
-// ArrayPath 
+// ArrayPath
 $aUser = array();
 $sName = A::set($aUser, 'user/basicInformation/name', 'Mathias');
 ```
@@ -100,7 +100,7 @@ if (array_key_exists('user', (array) $aUser)) {
 
 // ===================================================================
 
-// ArrayPath 
+// ArrayPath
 $bExists = A::exists($aUser, 'user/basicInformation/name');
 ```
 
@@ -119,7 +119,7 @@ if (isset($aUser['user']['basicInformation']['name'])) {
 $sName = A::remove($aUser, 'user/basicInformation/name');
 ```
 
-Example 5 (Using a custom separator) 
+Example 5 (Using a custom separator)
 ------------------------------------
 ```php
 <?php
