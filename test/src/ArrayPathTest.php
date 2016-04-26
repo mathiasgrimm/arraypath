@@ -126,6 +126,21 @@ class ArrayPathTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(17, ArrayPath::set($aSource, 'l1-2/l2-2/l3-3', 17));
         $this->assertEquals($aExpected, $aSource);
     }
+
+    public function testSetWithoutParent()
+    {
+        $aSource = array();
+
+        $aExpected   = array(
+            'l1-2' => array(
+                'l2-2' => array(
+                    'l3-3' => 17
+                )
+            )
+        );
+        $this->assertEquals(17, ArrayPath::set($aSource, 'l1-2/l2-2/l3-3', 17));
+        $this->assertEquals($aExpected, $aSource);
+    }
     
     public function testRemove()
     {

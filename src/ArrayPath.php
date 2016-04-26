@@ -88,14 +88,14 @@ class ArrayPath
         $mCurSource = &$aSource;
 
         foreach ($aPath as $mPath) {
-            if (array_key_exists($mPath, (array) $mCurSource)) {
-                $mCurSource = &$mCurSource[$mPath];
-            } else {
+            if (!array_key_exists($mPath, (array) $mCurSource)) {
                 $mCurSource[$mPath] = array();
             }
+
+            $mCurSource = &$mCurSource[$mPath];
         }
 
-        $mCurSource[$mPath] = $mValue;
+        $mCurSource = $mValue;
 
         return $mValue;
     }
